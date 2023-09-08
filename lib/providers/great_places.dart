@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:great_places/models/place.dart';
+import 'package:great_places/utils/db_ultil.dart';
 
 class GreatPlaces with ChangeNotifier {
   List<Place> _items = [];
@@ -27,6 +28,13 @@ class GreatPlaces with ChangeNotifier {
       location: null,
     );
     _items.add(newPlace);
+    notifyListeners();
+    _items.add(newPlace);
+    DbUtil.insert('places', {
+      'id': newPlace.id,
+      'title': newPlace.title,
+      'image': newPlace.image.path,
+    });
     notifyListeners();
   }
 }
