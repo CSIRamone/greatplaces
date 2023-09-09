@@ -8,6 +8,21 @@ import 'package:great_places/utils/db_ultil.dart';
 class GreatPlaces with ChangeNotifier {
   List<Place> _items = [];
 
+  Future<void> loadPLaces() async {
+    final dataList = await DbUtil.getData('places');
+    _items = dataList
+        .map(
+          (item) => Place(
+            id: item['id'],
+            title: item['title'],
+            image: File(item['image']),
+            location: null,
+          ),
+        )
+        .toList();
+    notifyListeners();
+  }
+
   List<Place> get items {
     return [..._items];
   }
@@ -29,6 +44,7 @@ class GreatPlaces with ChangeNotifier {
     );
     _items.add(newPlace);
     notifyListeners();
+
     _items.add(newPlace);
     DbUtil.insert('places', {
       'id': newPlace.id,
