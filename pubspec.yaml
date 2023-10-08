@@ -35,6 +35,11 @@ dependencies:
   path_provider: ^2.1.1
   path: ^1.8.3
   sqflite: ^2.3.0
+  location: 
+    git:
+      url: https://github.com/781flyingdutchman/flutterlocation.git
+      ref: V4
+      path: packages/location
 
 
   # The following adds the Cupertino Icons font to your application.
