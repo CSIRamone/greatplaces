@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: PlacesListScreen(),
+        home: const PlacesListScreen(),
         routes: {
           AppRoutes.PLACE_FORM: (context) => const PlaceFormScreen(),
         },

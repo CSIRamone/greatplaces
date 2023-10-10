@@ -49,7 +49,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
                     TextField(
