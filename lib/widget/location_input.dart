@@ -28,16 +28,15 @@ class _LocationInputState extends State<LocationInput> {
   }
 
   Future<void> _getCurrentUserLocation() async {
-    try{ 
-     final locData = await Location().getLocation();
+    try {
+      final locData = await Location().getLocation();
 
-    _showPreview(locData.latitude!, locData.longitude!);
-    widget.onSelectPosition(LatLng(locData.latitude!, locData.longitude!));
-  }catch (e) {
+      _showPreview(locData.latitude!, locData.longitude!);
+      widget.onSelectPosition(LatLng(locData.latitude!, locData.longitude!));
+    } catch (e) {
       return;
     }
-
-   
+  }
 
   Future<void> _selectOnMap() async {
     final selectedLocation = await Navigator.of(context).push(
