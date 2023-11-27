@@ -21,10 +21,12 @@ class _LocationInputState extends State<LocationInput> {
       latitude: lat,
       longitude: lgn,
     );
-
     setState(() {
       _previewImageUrl = staticMapImageUrl;
     });
+
+    print("latitude :  $lat");
+    print("Longitude : $lgn");
   }
 
   Future<void> _getCurrentUserLocation() async {
@@ -39,14 +41,14 @@ class _LocationInputState extends State<LocationInput> {
   }
 
   Future<void> _selectOnMap() async {
-    final selectedLocation = await Navigator.of(context).push(
+    final LatLng selectedLocation = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const MapScreen(),
       ),
     );
     if (selectedLocation == null) return;
 
-    _showPreview(selectedLocation.latitude!, selectedLocation.longitude!);
+    _showPreview(selectedLocation.latitude, selectedLocation.longitude);
 
     widget.onSelectPosition(selectedLocation);
   }

@@ -14,8 +14,8 @@ class LocationUtil {
   }
 
   static Future<String> getAddressFrom(LatLng position) async {
-    final url =
-        'https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.latitude},${position.longitude}&key=$googleApiKey';
+    final url = Uri.parse(
+        'https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.latitude},${position.longitude}&key=$googleApiKey');
     final response = await http.get(url as Uri);
     return jsonDecode(response.body)['results'][0]['formatted_address'];
   }
