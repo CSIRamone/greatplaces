@@ -22,7 +22,7 @@ class PlacesListScreen extends StatelessWidget {
         ],
       ),
       body: FutureBuilder(
-        future: Provider.of<GreatPlaces>(context, listen: false).loadPLaces(),
+        future: Provider.of<GreatPlaces>(context, listen: false).loadPlaces(),
         builder: (ctx, snapshot) => snapshot.connectionState ==
                 ConnectionState.waiting
             ? const Center(child: CircularProgressIndicator())
@@ -38,14 +38,20 @@ class PlacesListScreen extends StatelessWidget {
                             itemBuilder: (context, index) => ListTile(
                               leading: CircleAvatar(
                                 backgroundImage: FileImage(
-                                  greatPlaces.ItemByIndex(index).image,
+                                  greatPlaces.itemByIndex(index).image,
                                 ),
                               ),
-                              title: Text(greatPlaces.ItemByIndex(index).title),
-                              subtitle: Text(greatPlaces.ItemByIndex(index)
+                              title: Text(greatPlaces.itemByIndex(index).title),
+                              subtitle: Text(greatPlaces
+                                  .itemByIndex(index)
                                   .location!
                                   .address!),
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).pushNamed(
+                                  AppRoutes.PLACE_DETAIL,
+                                  arguments: greatPlaces.itemByIndex(index),
+                                );
+                              },
                             ),
                           ),
               ),
